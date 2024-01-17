@@ -7,16 +7,16 @@ import { NextResponse } from "next/server";
 export default authMiddleware({
     publicRoutes:["/"],
     //if user is already sign in can you use his session dear
-    afterAuth(auth,req){
-        if(!auth.userId && !auth.isPublicRoute){
-            return redirectToSignIn({returnBackUrl:req.url})
-        }
+    // afterAuth(auth,req){
+    //     if(!auth.userId && !auth.isPublicRoute){
+    //         return redirectToSignIn({returnBackUrl:req.url})
+    //     }
 
-        if(auth.userId && !auth.isPublicRoute){
-            return NextResponse.next();
-        }
-        return NextResponse.next();
-    },
+    //     if(auth.userId && !auth.isPublicRoute){
+    //         return NextResponse.next();
+    //     }
+    //     return NextResponse.next();
+    // },
     
 });
 

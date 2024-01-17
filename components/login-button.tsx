@@ -1,4 +1,5 @@
 "use client";
+import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 
 
@@ -11,9 +12,16 @@ export const LoginButton = ({
     asChild
 }:LoginButtonProps ) => {   
     const router = useRouter();
+    const {isSignedIn,isLoaded} = useAuth();
 
     const onClick = () =>{
+    if(!isSignedIn){
     router.push("/sign-in")
+    }
+    else{
+        console.log("I am triggered")
+        router.push("/dashboard")
+    }
     }
 
     return ( 
