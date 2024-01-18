@@ -19,7 +19,6 @@ export const LoginButton = ({
     router.push("/sign-in")
     }
     else{
-        console.log("I am triggered")
         router.push("/dashboard")
     }
     }
