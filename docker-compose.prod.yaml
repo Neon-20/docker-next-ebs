@@ -11,3 +11,5 @@ services:
     ports:
       # this will run the build on port 3000
       - 3000:3000
+    env_file:
+      - .env
