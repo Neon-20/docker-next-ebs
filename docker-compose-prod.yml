@@ -13,34 +13,13 @@ services:
   #     - 5432
 
   frontend:
-    container_name: frontend
-    secrets:
-      - next_public_clerk_publishable_key
-      - clerk_secret_key
-      - next_public_clerk_sign_in_url
-      - next_public_clerk_sign_up_url
-      - next_public_clerk_after_sign_in_url
-      - next_public_clerk_after_sign_up_url
+    container_name: next-frontend
     build: .
     restart: always
     environment:
       - NODE_ENV=production
     ports:
       - 3000:3000
-    # env_file: .env
+    env_file: .env
     # depends_on:
     #   - postgres
-
-secrets:
-  next_public_clerk_publishable_key:
-    file: ./secrets/next_public_clerk_publishable_key.txt
-  clerk_secret_key:
-    file: ./secrets/clerk_secret_key.txt
-  next_public_clerk_sign_in_url:
-    file: ./secrets/next_public_clerk_sign_in_url.txt
-  next_public_clerk_sign_up_url:
-    file: ./secrets/next_public_clerk_sign_up_url.txt
-  next_public_clerk_after_sign_in_url:
-    file: ./secrets/next_public_clerk_after_sign_in_url.txt
-  next_public_clerk_after_sign_up_url:
-    file: ./secrets/next_public_clerk_after_sign_up_url.txt  
