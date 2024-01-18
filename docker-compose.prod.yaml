@@ -1,5 +1,3 @@
-# docker-compose.prod.yaml
-
 version: "3.8"
 services:
   frontend:
@@ -9,7 +7,30 @@ services:
       target: prod
     restart: always
     ports:
-      # this will run the build on port 3000
       - 3000:3000
-    env_file:
-      - .env
+    secrets:
+      - source: clerk_publishable_key
+        target: NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+      - source: clerk_secret_key
+        target: CLERK_SECRET_KEY
+      - source: clerk_sign_in_url
+        target: NEXT_PUBLIC_CLERK_SIGN_IN_URL
+      - source: clerk_sign_up_url
+        target: NEXT_PUBLIC_CLERK_SIGN_UP_URL
+      - source: clerk_after_sign_in_url
+        target: NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL
+      - source: clerk_after_sign_up_url
+        target: NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL
+secrets:
+  clerk_publishable_key:
+    external: true
+  clerk_secret_key:
+    external: true
+  clerk_sign_in_url:
+    external: true
+  clerk_sign_up_url:
+    external: true
+  clerk_after_sign_in_url:
+    external: true
+  clerk_after_sign_up_url:
+    external: true
